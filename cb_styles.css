@@ -1,0 +1,190 @@
+body {
+background: #000;
+font-family: 'arial';
+font-weight: bold;
+color: #fff;
+}
+
+#cb_remaining {
+width:900px;
+height:30px;
+border: 1px solid #404040;
+position:relative;
+margin: 0px auto;
+-moz-border-radius: 6px;
+-webkit-border-radius: 6px;
+border-radius: 6px;
+clear:both;
+text-align: center;
+background: #121212;
+}
+
+#cb_remaining span {
+    line-height: 30px;
+    display: inline;
+    margin: 0 20px;
+    color: #b80a0a;
+    font-size: 1.3em;
+}
+
+#cb_calculator {
+font-size:60%;
+width:900px;
+height:320px;
+border: 1px solid #404040;
+position:relative;
+margin: 5px auto;
+-moz-border-radius: 6px;
+-webkit-border-radius: 6px;
+border-radius: 6px;
+background: #121212;
+}
+
+#cb_tabs {
+    width:575px;
+    height:316px;
+    position:relative;
+    margin: -1px auto;
+}
+
+#cb_targets {
+position:absolute;
+top:0px;
+left:0px;
+width:160px;
+line-height:250%;
+text-align: center;
+color: #fff;
+font-size: 2em;
+}
+
+#profession {
+margin: 0 auto;
+display: block;
+width: 150px;
+color: #fff;
+text-align: center;
+font-size: 13.5pt;
+font-weight: bold;
+background: #121212;
+border: 1px solid #b80a0a;
+}
+
+#target {
+margin: 0 auto;
+display: block;
+width: 60px;
+color: #b80a0a;
+text-align: center;
+font-size: 16pt;
+font-weight: bold;
+background: #121212;
+border: 1px solid #b80a0a;
+}
+
+#cb_totals {
+position:absolute;
+top:0px;
+left:740px;
+width:160px;
+text-align:center;
+color: #fff;
+line-height: 35px;
+font-size: 1.9em;
+text-decoration:underline;
+}
+
+.cb-totals {
+    text-align:right;
+    text-decoration:none;
+    clear: both;
+}
+
+.cb-totals div {
+    float: left;
+}
+
+.totals-title {
+    width: 67%;
+    margin-right: 5%;
+}
+
+.cb-total-value {
+    width: 20%;
+    color: #b80a0a;
+    font-size: 1.3em;
+}
+
+#stats_avail, #weapons_avail, #current_level {
+margin-right: auto;
+margin-left: auto;
+display: inline;
+width: 45px;
+color: #b80a0a;
+text-align: center;
+font-size: 16pt;
+font-weight: bold;
+font-family: "arial";
+background: #121212;
+border: 0px;
+}
+
+.slider-container {
+    clear: both;
+    line-height: 35px;
+}
+
+.slider-container div {
+     float: left;
+}
+
+.slider-container div.slider-title {
+    width: 25%;
+    font-size: 1.7em;
+    font-weight: bold;
+}
+
+.slider-container div.cb_slider {
+    margin: 7px 10px 0 10px;
+    width: 36%;
+    float: left;
+    font-size: 1.4em;
+}
+
+.slider-container div.min-value {
+    text-align: right;
+}
+
+.slider-container div.max-value {
+    margin-right: 10px;
+}
+
+.slider-container div.min-value,
+.slider-container div.max-value {
+    color: gray;
+    font-size: 1.2em;
+    font-weight: bold;
+    width: 5%;
+}
+
+.slider-container div.current-value {
+    font-size: 2.4em;
+    font-weight: bold;
+    width: 10%;
+    text-align: center;
+}
+
+.minus,
+.plus {
+    float: left;
+    padding: 5px;
+}
+
+.cb-tab-container {
+margin-top: 20px;
+}
+
+.ui-slider-handle.ui-state-active {
+background: #b80a0a;
+color: #b80a0a;;
+}

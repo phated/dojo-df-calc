@@ -1,0 +1,334 @@
+<div id="remaining">
+	<div class="calc_headers">
+		Current Level: <input type="text" id="current_level" readonly="readonly" value="1"></input>
+		Stat Points Available:<input type="text" id="stats_avail" readonly="readonly" value="0"></input>
+		Proficiency Points Available: <input type="text" id="weapons_avail" readonly="readonly" value="0"></input>
+	</div>
+</div>
+<div id="calculator">
+	<div id="targets">
+		<div id="prof_sidebar" class="calc_headers">
+			<div>Profession:</div>
+			<select id="prof_select" onchange="change_prof()">
+				<option value="Farmer">Farmer</option>
+				<option value="Scientist">Scientist</option>
+				<option value="Doctor">Doctor</option>
+				<option value="Chef">Chef</option>
+				<option value="Engineer">Engineer</option>
+				<option value="Boxer">Boxer</option>
+				<option value="Soldier">Soldier</option>
+				<option value="Police">Police Officer</option>
+				<option value="Fireman">Fireman</option>
+				<option value="Athlete">Athlete</option>
+				<option value="Teacher">Teacher</option>
+				<option value="Priest">Priest</option>
+				<option value="Lawyer">Lawyer</option>
+				<option value="Accountant">Accountant</option>
+				<option value="Journalist">Journalist</option>
+				<option value="Actor">Actor</option>
+				<option value="Broker">Stock Broker</option>
+				<option value="Architect">Architect</option>
+				<option value="Entertainer">Entertainer</option>
+				<option value="Student">Student</option>
+			</select>
+			<div>Target Level:</div>
+			<input type="text" id="target_level" onchange="stat_avail();weapon_avail();" value="0"></input>
+		</div>
+	</div>
+	<div id="tabs" style="width:575px;height:316px;position:relative;margin: -1px auto;">
+		<ul>
+			<li><a href="#attributes"><span>Attributes</span></a></li>
+			<li><a href="#proficiencies"><span>Proficiencies</span></a></li>
+			<li><a href="#weapon1"><span>Weapon 1</span></a></li>
+			<li><a href="#weapon2"><span>Weapon 2</span></a></li>
+			<li><a href="#weapon3"><span>Weapon 3</span></a></li>
+			<li><a href="#armour"><span>Armour</span></a></li>
+		</ul>
+		<div id="attributes">
+		<!-- Strength -->
+			<span class="calc_headers" id="pos1header">Strength</span>
+			<div class="sliderWrapper" id="pos1slider">
+				<div id="strSlider"></div>
+				<span id="strMin" class="sliderMin">25</span><span id="strMax" class="sliderMax">100</span>
+			</div>
+			<div id="pos1buttons" class="btnWrapper">
+				<span id="strMinus" onclick="minusBtn('strength','strSlider')"><img src="minus.png" class="btnImages" /></span><span id="strPlus" onclick="plusBtn('strength','strSlider')"><img src="plus.png" class="btnImages" /></span>
+			</div>
+			<input class="calc_stats" id="strength" value="25" type="text" readonly="readonly" style="font-size: 20pt;top:45px;"></input>
+			<!-- Endurance -->
+			<span class="calc_headers" id="pos2header">Endurance</span>
+			<div class="sliderWrapper" id="pos2slider">
+				<div id="endSlider"></div>
+				<span id="endMin" class="sliderMin">25</span><span id="endMax" class="sliderMax">100</span>
+			</div>
+			<div id="pos2buttons" class="btnWrapper">
+				<span id="endMinus" onclick="minusBtn('endurance','endSlider')"><img src="minus.png" class="btnImages" /></span><span id="endPlus" onclick="plusBtn('endurance','endSlider')"><img src="plus.png" class="btnImages" /></span>
+			</div>
+			<input class="calc_stats" id="endurance" value="25" type="text" readonly="readonly" style="font-size: 20pt;top:90px;"></input>
+			<!-- Agility -->
+			<span class="calc_headers" id="pos3header">Agility</span>
+			<div class="sliderWrapper" id="pos3slider">
+				<div id="agiSlider"></div>
+				<span id="agiMin" class="sliderMin">25</span><span id="agiMax" class="sliderMax">100</span>
+			</div>
+			<div id="pos3buttons" class="btnWrapper">
+				<span id="agiMinus" onclick="minusBtn('agility','agiSlider')"><img src="minus.png" class="btnImages" /></span><span id="agiPlus" onclick="plusBtn('agility','agiSlider')"><img src="plus.png" class="btnImages" /></span>
+			</div>
+			<input class="calc_stats" id="agility" value="25" type="text" readonly="readonly" style="font-size: 20pt;top:135px;"></input>
+			<!-- Accuracy -->
+			<span class="calc_headers" id="pos4header">Accuracy</span>
+			<div class="sliderWrapper" id="pos4slider">
+				<div id="accSlider"></div>
+				<span id="accMin" class="sliderMin">25</span><span id="accMax" class="sliderMax">100</span>
+			</div>
+			<div id="pos4buttons" class="btnWrapper">
+				<span id="accMinus" onclick="minusBtn('accuracy','accSlider')"><img src="minus.png" class="btnImages" /></span><span id="accPlus" onclick="plusBtn('accuracy','accSlider')"><img src="plus.png" class="btnImages" /></span>
+			</div>
+			<input class="calc_stats" id="accuracy" value="25" type="text" readonly="readonly" style="font-size: 20pt;top:180px;"></input>
+			<!-- Critical Hit -->
+			<span class="calc_headers" id="pos5header">Critical Hit</span>
+			<div class="sliderWrapper" id="pos5slider">
+				<div id="critSlider"></div>
+				<span id="critMin" class="sliderMin">25</span><span id="critMax" class="sliderMax">100</span>
+			</div>
+			<div id="pos5buttons" class="btnWrapper">
+				<span id="critMinus" onclick="minusBtn('critical_hit','critSlider')"><img src="minus.png" class="btnImages" /></span><span id="critPlus" onclick="plusBtn('critical_hit','critSlider')"><img src="plus.png" class="btnImages" /></span>
+			</div>
+			<input class="calc_stats" id="critical_hit" value="25" type="text" readonly="readonly" style="font-size: 20pt;top:225px;"></input>
+			<!-- Reloading -->
+			<span class="calc_headers" id="pos6header">Reloading</span>
+			<div class="sliderWrapper" id="pos6slider">
+				<div id="relSlider"></div>
+				<span id="relMin" class="sliderMin">25</span><span id="relMax" class="sliderMax">100</span>
+			</div>
+			<div id="pos6buttons" class="btnWrapper">
+				<span id="relMinus" onclick="minusBtn('reloading','relSlider')"><img src="minus.png" class="btnImages" /></span><span id="relPlus" onclick="plusBtn('reloading','relSlider')"><img src="plus.png" class="btnImages" /></span>
+			</div>
+			<input class="calc_stats" id="reloading" value="25" type="text" readonly="readonly" style="font-size: 20pt;top:270px;"></input>
+		</div>
+		<div id="proficiencies">
+		<!-- Melee -->
+			<span class="calc_headers" id="pos1header">Melee</span>
+			<div class="sliderWrapper" id="pos1slider">
+				<div id="melSlider"></div>
+				<span id="melMin" class="sliderMin">5</span><span id="melMax" class="sliderMax">100</span>
+			</div>
+			<div id="pos1buttons" class="btnWrapper">
+				<span id="melMinus" onclick="minusBtn('melee','melSlider')"><img src="minus.png" class="btnImages" /></span><span id="melPlus" onclick="plusBtn('melee','melSlider')"><img src="plus.png" class="btnImages" /></span>
+			</div>
+			<input class="calc_stats" id="melee" value="5" type="text" readonly="readonly" style="font-size: 20pt;top:45px;"></input>
+			<!-- Pistols -->
+			<span class="calc_headers" id="pos2header">Pistols</span>
+			<div class="sliderWrapper" id="pos2slider">
+				<div id="pisSlider"></div>
+				<span id="pisMin" class="sliderMin">5</span><span id="pisMax" class="sliderMax">100</span>
+			</div>
+			<div id="pos2buttons" class="btnWrapper">
+				<span id="pisMinus" onclick="minusBtn('pistols','pisSlider')"><img src="minus.png" class="btnImages" /></span><span id="pisPlus" onclick="plusBtn('pistols','pisSlider')"><img src="plus.png" class="btnImages" /></span>
+			</div>
+			<input class="calc_stats" id="pistols" value="5" type="text" readonly="readonly" style="font-size: 20pt;top:90px;"></input>
+			<!-- Rifles -->
+			<span class="calc_headers" id="pos3header">Rifles</span>
+			<div class="sliderWrapper" id="pos3slider">
+				<div id="rifSlider"></div>
+				<span id="rifMin" class="sliderMin">0</span><span id="rifMax" class="sliderMax">100</span>
+			</div>
+			<div id="pos3buttons" class="btnWrapper">
+				<span id="rifMinus" onclick="minusBtn('rifles','rifSlider')"><img src="minus.png" class="btnImages" /></span><span id="rifPlus" onclick="plusBtn('rifles','rifSlider')"><img src="plus.png" class="btnImages" /></span>
+			</div>
+			<input class="calc_stats" id="rifles" value="0" type="text" readonly="readonly" style="font-size: 20pt;top:135px;"></input>
+			<!-- Shotguns -->
+			<span class="calc_headers" id="pos4header">Shotguns</span>
+			<div class="sliderWrapper" id="pos4slider">
+				<div id="sgSlider"></div>
+				<span id="sgMin" class="sliderMin">0</span><span id="sgMax" class="sliderMax">100</span>
+			</div>
+			<div id="pos4buttons" class="btnWrapper">
+				<span id="sgMinus" onclick="minusBtn('shotguns','sgSlider')"><img src="minus.png" class="btnImages" /></span><span id="sgPlus" onclick="plusBtn('shotguns','sgSlider')"><img src="plus.png" class="btnImages" /></span>
+			</div>
+			<input class="calc_stats" id="shotguns" value="0" type="text" readonly="readonly" style="font-size: 20pt;top:180px;"></input>
+			<!-- Machine Guns -->
+			<span class="calc_headers" id="pos5header">Machine Guns</span>
+			<div class="sliderWrapper" id="pos5slider">
+				<div id="mgSlider"></div>
+				<span id="mgMin" class="sliderMin">0</span><span id="mgMax" class="sliderMax">100</span>
+			</div>
+			<div id="pos5buttons" class="btnWrapper">
+				<span id="mgMinus" onclick="minusBtn('machine_guns','mgSlider')"><img src="minus.png" class="btnImages" /></span><span id="mgPlus" onclick="plusBtn('machine_guns','mgSlider')"><img src="plus.png" class="btnImages" /></span>
+			</div>
+			<input class="calc_stats" id="machine_guns" value="0" type="text" readonly="readonly" style="font-size: 20pt;top:225px;"></input>
+			<!-- Explosives -->
+			<span class="calc_headers" id="pos6header">Explosives</span>
+			<div class="sliderWrapper" id="pos6slider">
+				<div id="explSlider"></div>
+				<span id="explMin" class="sliderMin">0</span><span id="explMax" class="sliderMax">100</span>
+			</div>
+			<div id="pos6buttons" class="btnWrapper">
+				<span id="explMinus" onclick="minusBtn('explosives','explSlider')"><img src="minus.png" class="btnImages" /></span><span id="explPlus" onclick="plusBtn('explosives','explSlider')"><img src="plus.png" class="btnImages" /></span>
+			</div>
+			<input class="calc_stats" id="explosives" value="0" type="text" readonly="readonly" style="font-size: 20pt;top:270px;"></input>
+		</div>
+		<div id="weapon1">
+		<!-- Accuracy -->
+			<span class="calc_headers" id="pos1header">Accuracy</span>
+			<div class="sliderWrapper" id="pos1slider">
+				<div id="wpn1AccSlider"></div>
+				<span class="sliderMin">0</span><span class="sliderMax">8</span>
+			</div>
+			<div id="pos1buttons" class="btnWrapper">
+				<span id="wpn1AccMinus" onclick="minusBtn('wpn1Acc','wpn1AccSlider')"><img src="minus.png" class="btnImages" /></span><span id="wpn1AccPlus" onclick="plusBtn('wpn1Acc','wpn1AccSlider')"><img src="plus.png" class="btnImages" /></span>
+			</div>
+			<input class="calc_stats" id="wpn1Acc" value="0" type="text" readonly="readonly" style="font-size: 20pt;top:45px;"></input>
+			<!-- Reloading -->
+			<span class="calc_headers" id="pos2header">Reloading</span>
+			<div class="sliderWrapper" id="pos2slider">
+				<div id="wpn1RelSlider"></div>
+				<span class="sliderMin">0</span><span class="sliderMax">8</span>
+			</div>
+			<div id="pos2buttons" class="btnWrapper">
+				<span id="wpn1RelMinus" onclick="minusBtn('wpn1Rel','wpn1RelSlider')"><img src="minus.png" class="btnImages" /></span><span id="wpn1RelPlus" onclick="plusBtn('wpn1Rel','wpn1RelSlider')"><img src="plus.png" class="btnImages" /></span>
+			</div>
+			<input class="calc_stats" id="wpn1Rel" value="0" type="text" readonly="readonly" style="font-size: 20pt;top:90px;"></input>
+			<!-- Critical Hit -->
+			<span class="calc_headers" id="pos3header">Critical Hit</span>
+			<div class="sliderWrapper" id="pos3slider">
+				<div id="wpn1CritSlider"></div>
+				<span class="sliderMin">0</span><span class="sliderMax">8</span>
+			</div>
+			<div id="pos3buttons" class="btnWrapper">
+				<span id="wpn1CritMinus" onclick="minusBtn('wpn1Crit','wpn1CritSlider')"><img src="minus.png" class="btnImages" /></span><span id="wpn1CritPlus" onclick="plusBtn('wpn1Crit','wpn1CritSlider')"><img src="plus.png" class="btnImages" /></span>
+			</div>
+			<input class="calc_stats" id="wpn1Crit" value="0" type="text" readonly="readonly" style="font-size: 20pt;top:135px;"></input>
+		</div>
+		<div id="weapon2">
+		<!-- Accuracy -->
+			<span class="calc_headers" id="pos1header">Accuracy</span>
+			<div class="sliderWrapper" id="pos1slider">
+				<div id="wpn2AccSlider"></div>
+				<span class="sliderMin">0</span><span class="sliderMax">8</span>
+			</div>
+			<div id="pos1buttons" class="btnWrapper">
+				<span id="wpn2AccMinus" onclick="minusBtn('wpn2Acc','wpn2AccSlider')"><img src="minus.png" class="btnImages" /></span><span id="wpn2AccPlus" onclick="plusBtn('wpn2Acc','wpn2AccSlider')"><img src="plus.png" class="btnImages" /></span>
+			</div>
+			<input class="calc_stats" id="wpn2Acc" value="0" type="text" readonly="readonly" style="font-size: 20pt;top:45px;"></input>
+			<!-- Reloading -->
+			<span class="calc_headers" id="pos2header">Reloading</span>
+			<div class="sliderWrapper" id="pos2slider">
+				<div id="wpn2RelSlider"></div>
+				<span class="sliderMin">0</span><span class="sliderMax">8</span>
+			</div>
+			<div id="pos2buttons" class="btnWrapper">
+				<span id="wpn2RelMinus" onclick="minusBtn('wpn2Rel','wpn2RelSlider')"><img src="minus.png" class="btnImages" /></span><span id="wpn2RelPlus" onclick="plusBtn('wpn2Rel','wpn2RelSlider')"><img src="plus.png" class="btnImages" /></span>
+			</div>
+			<input class="calc_stats" id="wpn2Rel" value="0" type="text" readonly="readonly" style="font-size: 20pt;top:90px;"></input>
+			<!-- Critical Hit -->
+			<span class="calc_headers" id="pos3header">Critical Hit</span>
+			<div class="sliderWrapper" id="pos3slider">
+				<div id="wpn2CritSlider"></div>
+				<span class="sliderMin">0</span><span class="sliderMax">8</span>
+			</div>
+			<div id="pos3buttons" class="btnWrapper">
+				<span id="wpn2CritMinus" onclick="minusBtn('wpn2Crit','wpn2CritSlider')"><img src="minus.png" class="btnImages" /></span><span id="wpn2CritPlus" onclick="plusBtn('wpn2Crit','wpn2CritSlider')"><img src="plus.png" class="btnImages" /></span>
+			</div>
+			<input class="calc_stats" id="wpn2Crit" value="0" type="text" readonly="readonly" style="font-size: 20pt;top:135px;"></input>
+		</div>
+		<div id="weapon3">
+		<!-- Accuracy -->
+			<span class="calc_headers" id="pos1header">Accuracy</span>
+			<div class="sliderWrapper" id="pos1slider">
+				<div id="wpn3AccSlider"></div>
+				<span class="sliderMin">0</span><span class="sliderMax">8</span>
+			</div>
+			<div id="pos1buttons" class="btnWrapper">
+				<span id="wpn3AccMinus" onclick="minusBtn('wpn3Acc','wpn3AccSlider')"><img src="minus.png" class="btnImages" /></span><span id="wpn3AccPlus" onclick="plusBtn('wpn3Acc','wpn3AccSlider')"><img src="plus.png" class="btnImages" /></span>
+			</div>
+			<input class="calc_stats" id="wpn3Acc" value="0" type="text" readonly="readonly" style="font-size: 20pt;top:45px;"></input>
+			<!-- Reloading -->
+			<span class="calc_headers" id="pos2header">Reloading</span>
+			<div class="sliderWrapper" id="pos2slider">
+				<div id="wpn3RelSlider"></div>
+				<span class="sliderMin">0</span><span class="sliderMax">8</span>
+			</div>
+			<div id="pos2buttons" class="btnWrapper">
+				<span id="wpn3RelMinus" onclick="minusBtn('wpn3Rel','wpn3RelSlider')"><img src="minus.png" class="btnImages" /></span><span id="wpn3RelPlus" onclick="plusBtn('wpn3Rel','wpn3RelSlider')"><img src="plus.png" class="btnImages" /></span>
+			</div>
+			<input class="calc_stats" id="wpn3Rel" value="0" type="text" readonly="readonly" style="font-size: 20pt;top:90px;"></input>
+			<!-- Critical Hit -->
+			<span class="calc_headers" id="pos3header">Critical Hit</span>
+			<div class="sliderWrapper" id="pos3slider">
+				<div id="wpn3CritSlider"></div>
+				<span class="sliderMin">0</span><span class="sliderMax">8</span>
+			</div>
+			<div id="pos3buttons" class="btnWrapper">
+				<span id="wpn3CritMinus" onclick="minusBtn('wpn3Crit','wpn3CritSlider')"><img src="minus.png" class="btnImages" /></span><span id="wpn3CritPlus" onclick="plusBtn('wpn3Crit','wpn3CritSlider')"><img src="plus.png" class="btnImages" /></span>
+			</div>
+			<input class="calc_stats" id="wpn3Crit" value="0" type="text" readonly="readonly" style="font-size: 20pt;top:135px;"></input>
+		</div>
+		<div id="armour">
+		<!-- Agility -->
+		<span class="calc_headers" id="pos1header">Agility</span>
+		<div class="sliderWrapper" id="pos1slider">
+			<div id="armAgiSlider"></div>
+			<span class="sliderMin">0</span><span class="sliderMax">24</span>
+		</div>
+		<div id="pos1buttons" class="btnWrapper">
+			<span id="armAgiMinus" onclick="minusBtn('armAgi','armAgiSlider')"><img src="minus.png" class="btnImages" /></span><span id="armAgiPlus" onclick="plusBtn('armAgi','armAgiSlider')"><img src="plus.png" class="btnImages" /></span>
+		</div>
+		<input class="calc_stats" id="armAgi" value="0" type="text" readonly="readonly" style="font-size: 20pt;top:45px;"></input>
+		<!-- Endurance -->
+			<span class="calc_headers" id="pos2header">Endurance</span>
+			<div class="sliderWrapper" id="pos2slider">
+				<div id="armEndSlider"></div>
+				<span class="sliderMin">0</span><span class="sliderMax">24</span>
+			</div>
+			<div id="pos2buttons" class="btnWrapper">
+				<span id="armEndMinus" onclick="minusBtn('armEnd','armEndSlider')"><img src="minus.png" class="btnImages" /></span><span id="armEndPlus" onclick="plusBtn('armEnd','armEndSlider')"><img src="plus.png" class="btnImages" /></span>
+			</div>
+			<input class="calc_stats" id="armEnd" value="0" type="text" readonly="readonly" style="font-size: 20pt;top:90px;"></input>
+		</div>
+	</div>
+	<div id="totals">
+		<div id="totals_sidebar" class="calc_headers">
+			<div id="totals_header">Totals</div>
+			<div>Strength: <input type="text" id="total_str" readonly="readonly" value="0"></input></div>
+			<div>Endurance: <input type="text" id="total_end" readonly="readonly" value="0"></input></div>
+			<div>Agility: <input type="text" id="total_agi" readonly="readonly" value="0"></input></div>
+			<div>Accuracy: <input type="text" id="total_acc" readonly="readonly" value="0"></input></div>
+			<div>Critical Hit: <input type="text" id="total_crit" readonly="readonly" value="0"></input></div>
+			<div>Reloading: <input type="text" id="total_rel" readonly="readonly" value="0"></input></div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	jQuery("#tabs").tabs({ cache: true, load: loadNextTab });
+	/* attribute sliders */
+	jQuery("#strSlider").slider({ min: 25, max: 100, step: 5, slide: function(event, ui) { jQuery("#strength").val(ui.value);value_changed('strength'); } });
+	jQuery("#endSlider").slider({ min: 25, max: 100, step: 5, slide: function(event, ui) { jQuery("#endurance").val(ui.value);value_changed('endurance'); } });
+	jQuery("#agiSlider").slider({ min: 25, max: 100, step: 5, slide: function(event, ui) { jQuery("#agility").val(ui.value);value_changed('agility'); } });
+	jQuery("#accSlider").slider({ min: 25, max: 100, step: 5, slide: function(event, ui) { jQuery("#accuracy").val(ui.value);value_changed('accuracy'); } });
+	jQuery("#critSlider").slider({ min: 25, max: 100, step: 5, slide: function(event, ui) { jQuery("#critical_hit").val(ui.value);value_changed('critical_hit'); } });
+	jQuery("#relSlider").slider({ min: 25, max: 100, step: 5, slide: function(event, ui) { jQuery("#reloading").val(ui.value);value_changed('reloading'); } });
+	/* proficiency sliders */
+	jQuery("#melSlider").slider({ min: 5, max: 100, step: 5, slide: function(event, ui) { jQuery("#melee").val(ui.value);value_changed('melee'); } });
+	jQuery("#pisSlider").slider({ min: 5, max: 100, step: 5, slide: function(event, ui) { jQuery("#pistols").val(ui.value);value_changed('pistols'); } });
+	jQuery("#rifSlider").slider({ min: 0, max: 100, step: 5, slide: function(event, ui) { jQuery("#rifles").val(ui.value);value_changed('rifles'); } });
+	jQuery("#sgSlider").slider({ min: 0, max: 100, step: 5, slide: function(event, ui) { jQuery("#shotguns").val(ui.value);value_changed('shotguns'); } });
+	jQuery("#mgSlider").slider({ min: 0, max: 100, step: 5, slide: function(event, ui) { jQuery("#machine_guns").val(ui.value);value_changed('machine_guns'); } });
+	jQuery("#explSlider").slider({ min: 0, max: 100, step: 5, slide: function(event, ui) { jQuery("#explosives").val(ui.value);value_changed('explosives'); } });
+	/* weapon1 sliders */
+	jQuery("#wpn1AccSlider").slider({ min: 0, max: 8, step: 1, slide: function(event, ui) { jQuery("#wpn1Acc").val(ui.value);update_totals(); } });
+	jQuery("#wpn1RelSlider").slider({ min: 0, max: 8, step: 1, slide: function(event, ui) { jQuery("#wpn1Rel").val(ui.value);update_totals(); } });
+	jQuery("#wpn1CritSlider").slider({ min: 0, max: 8, step: 1, slide: function(event, ui) { jQuery("#wpn1Crit").val(ui.value);update_totals(); } });
+	/* weapon2 sliders */
+	jQuery("#wpn2AccSlider").slider({ min: 0, max: 8, step: 1, slide: function(event, ui) { jQuery("#wpn2Acc").val(ui.value);update_totals(); } });
+	jQuery("#wpn2RelSlider").slider({ min: 0, max: 8, step: 1, slide: function(event, ui) { jQuery("#wpn2Rel").val(ui.value);update_totals(); } });
+	jQuery("#wpn2CritSlider").slider({ min: 0, max: 8, step: 1, slide: function(event, ui) { jQuery("#wpn2Crit").val(ui.value);update_totals(); } });
+	/* weapon3 sliders */
+	jQuery("#wpn3AccSlider").slider({ min: 0, max: 8, step: 1, slide: function(event, ui) { jQuery("#wpn3Acc").val(ui.value);update_totals(); } });
+	jQuery("#wpn3RelSlider").slider({ min: 0, max: 8, step: 1, slide: function(event, ui) { jQuery("#wpn3Rel").val(ui.value);update_totals(); } });
+	jQuery("#wpn3CritSlider").slider({ min: 0, max: 8, step: 1, slide: function(event, ui) { jQuery("#wpn3Crit").val(ui.value);update_totals(); } });
+	/* armour sliders */
+	jQuery("#armAgiSlider").slider({ min: 0, max: 24, step: 1, slide: function(event, ui) { jQuery("#armAgi").val(ui.value);update_totals(); } });
+	jQuery("#armEndSlider").slider({ min: 0, max: 24, step: 1, slide: function(event, ui) { jQuery("#armEnd").val(ui.value);update_totals(); } });
+</script>
