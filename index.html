@@ -1,16 +1,77 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/vader/jquery-ui.css" type="text/css" />
-    <link href="cb_styles.css" rel="stylesheet" type="text/css"/>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-	<script src="jquery.characterbuilder.js" type="text/javascript"></script>
-</head>
-<body>
-<div id="characterbuilder"></div>
-<script>
-$('#characterbuilder').characterbuilder();
-</script>
-</body>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html dir="ltr">
+    
+    <head>
+        <style type="text/css">
+            body, html { font-family:helvetica,arial,sans-serif; font-size:90%; }
+        </style>
+        <script src="http://ajax.googleapis.com/ajax/libs/dojo/1.6/dojo/dojo.xd.js"
+        djConfig="parseOnLoad: true">
+        </script>
+        <script src="dfcb.formbuilder.js"></script>
+        <script type="text/javascript">
+            dojo.require("dijit.layout.TabContainer");
+            dojo.require("dijit.layout.ContentPane");
+            dojo.require("dijit.form.HorizontalSlider");
+            
+            dojo.addOnLoad(function() {
+                var tab_container = new dijit.layout.TabContainer({
+                    style: "height: 100%; width: 100%;"
+                },
+                "tab-container");
+
+                /*var attribute_pane = new dijit.layout.ContentPane({
+                    title: "Attributes"
+                });
+                tab_container.addChild(attribute_pane);
+
+                var proficiency_pane = new dijit.layout.ContentPane({
+                    title: "Proficiencies"
+                });
+                tab_container.addChild(proficiency_pane);*/
+                
+                	/*var content;
+                	for(x=0;x < 5;x++) {
+                		content += "<div>" + x + "</div>";
+                	}
+                	proficiency_pane.set('content',content);*/
+                	
+                for(var tab in tabs){
+                	var new_pane = new dijit.layout.ContentPane({
+            			title: tab
+            		})
+                	tab_container.addChild(new_pane);
+                	var tab_content = new dojo.NodeList();
+                	for(var slider in tabs[tab].sliders){
+                		tab_content.push('<div id="' + tabs[tab].sliders[slider].id + '">' + tabs[tab].sliders[slider].name + '</div>');
+                	}
+                	new_pane.set('content',tab_content);
+                	for(var slider in tabs[tab].sliders){
+                		var horizSlider = new dijit.form.HorizontalSlider({
+			                minimum: tabs[tab].sliders[slider].minimum,
+			                maximum: tabs[tab].sliders[slider].maximum,
+			                value: tabs[tab].sliders[slider].value,
+			                intermediateChanges: true,
+			                discreteValues : tabs[tab].sliders[slider].discreteValues,
+			                name: tabs[tab].sliders[slider].name,
+			                style: "height: 50px;"
+			            }, tabs[tab].sliders[slider].id);
+                	}
+                	
+                };
+                tab_container.startup();
+                horizSlider.startup();
+            });
+        </script>
+        <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.6/dijit/themes/claro/claro.css"
+        />
+    </head>
+    
+    <body class=" claro ">
+        <div style="width: 600px; height: 400px">
+            <div id="tab-container">
+            </div>
+        </div>
+    </body>
+
 </html>
